@@ -18,3 +18,5 @@ To learn more about Next.js, take a look at the following resources:
 - TypeScript
 - Chakra UI
 - Redux
+
+:)
