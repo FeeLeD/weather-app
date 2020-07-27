@@ -78,13 +78,13 @@ interface PostNextPageContext extends NextPageContext {
 }
 
 export const getStaticPaths = async () => {
-  const citiesData = cities;
-
-  const paths = citiesData.map(city => ({
-    params: { city: city.name }
-  }));
-
   setTimeout(() => {
+    const citiesData = cities;
+
+    const paths = citiesData.map(city => ({
+      params: { city: city.name }
+    }));
+
     return {
       paths: paths,
       fallback: true
