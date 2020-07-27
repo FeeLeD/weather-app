@@ -11,6 +11,7 @@ import {
   IconButton
 } from "@chakra-ui/core";
 import { useRouter } from "next/router";
+import { cities } from 'pages/api/cities';
 
 interface WeatherProps {
   cities: City[] | null
@@ -42,7 +43,7 @@ const Weather: React.FC<WeatherProps> = ({ cities }: WeatherProps) => {
                 <Tooltip hasArrow label={city.desc} aria-label=''>
                   <Badge fontSize='1rem' color='teal'>{city.name}</Badge>
                 </Tooltip>
-                <IconButton onClick={() => clickHandler(city.name)} variantColor="teal" aria-label="Search weather" icon="search" size='sm'/>
+                <IconButton onClick={() => clickHandler(city.name)} variantColor="teal" aria-label="Search weather" icon="search" size='sm' />
               </Flex>
             </ListItem>
           )}
@@ -57,12 +58,11 @@ export default Weather;
 
 export const getStaticProps = async () => {
 
-  const res = await fetch(process.env.CITIES_API);
-  const cities = await res.json();
-
-  return {
-    props: {
-      cities
+  setTimeout(() => {
+    return {
+      props: {
+        cities
+      }
     }
-  }
+  }, 1000)
 };

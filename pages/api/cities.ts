@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-const cities = [
+export const cities = [
   { 
     name: 'Bangkok',
     desc: 'The capital and most populous city of Thailand'

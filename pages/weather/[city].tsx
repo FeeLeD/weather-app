@@ -5,6 +5,7 @@ import { NextPageContext } from "next";
 import { Flex, Stack, Heading, Box, Text, Image } from "@chakra-ui/core";
 import { useRouter } from "next/router";
 import WeatherCardSkeleton from "components/Weather/WeatherCardSkeleton";
+import { cities } from 'pages/api/cities';
 
 type CityWeatherProps = {
   data?: WeatherData
@@ -77,17 +78,18 @@ interface PostNextPageContext extends NextPageContext {
 }
 
 export const getStaticPaths = async () => {
-  const res = await fetch(process.env.CITIES_API);
-  const cities = await res.json();
+  const citiesData = cities;
 
-  const paths = cities.map(city => ({
+  const paths = citiesData.map(city => ({
     params: { city: city.name }
   }));
 
-  return {
-    paths: paths,
-    fallback: true
-  }
+  setTimeout(() => {
+    return {
+      paths: paths,
+      fallback: true
+    }
+  }, 1000);
 }
 
 export const getStaticProps = async ({ params }: PostNextPageContext) => {
